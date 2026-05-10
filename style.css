@@ -1,0 +1,307 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --fundo-principal: #0E101C;
+    --container: #151826;
+    --cor-variante: #353A49;
+    --botao: #8c45ff;
+    --botao-degrade: #b197f7;
+    --text-color: #fff;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--fundo-principal);
+    color: var(--text-color);
+}
+
+#cursor {
+    background-color: var(--botao);
+    height: 35px;
+    width: 35px;
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(20px);
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.container-header {
+    background-color: var(--container);
+    color: var(--text-color);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--botao) 0px 2px 15px;
+    border-bottom: var(--botao) 2px solid;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.title-header {
+    font-size: 24px;
+}
+
+.navbar {
+    display: flex;
+    gap: 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 18px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    margin: 0 10px;
+}
+
+.link:hover {
+    color: var(--botao);
+}
+
+/* =================================== CONTAINERS =================================== */
+.container {
+    /* background-color: yellowgreen; */
+    position: relative;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.container-player {
+    flex: 3;
+    max-width: 1000px;
+    background-color: var(--container);
+    margin: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    box-sizing: border-box; /* para que o padding não aumente o tamanho do container */
+}
+
+.container-musics {
+    margin: 10px;
+    flex: 1;
+    min-height: 100%;
+    background-color: var(--container);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+/* ==================================== PLAYER =================================== */ 
+.info-player {
+    text-align: center;
+    /* background-color: rgb(61, 61, 2); */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.title-playlist {
+    font-size: 10px;
+    font-weight: bold;
+    color: var(--botao-degrade);
+}
+
+.player{
+
+    width: 600px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ==================================== DISCO =================================== */
+/* disco vira pai do play */
+.disco {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 400px;
+    /* background-color: var(--botao-degrade); */
+}
+
+/* camada 2 - sobre a case */
+.disco .cd {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    /* animação */
+    transform: rotate(0deg);
+    animation: girar 25s linear infinite;
+    animation-play-state: paused;
+}
+
+@keyframes girar {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* camada 3 - topo */
+.disco .play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+/* play absolute fica em cima da img */
+.btn-control.play {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--botao);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer
+}
+
+
+/* ==================================== BTN CONTROL =================================== */
+.controls {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-control.anterior,
+.btn-control.proximo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    background-color: var(--botao);
+}
+/* ==================================== INFO PLAYER =================================== */
+.title-player {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.artist-player {
+    font-size: 12px;
+    color: var(--botao-degrade);
+}
+
+/* ==================================== MUSIC TRACK =================================== */
+.title-musics {
+    color: var(--botao-degrade);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.music-track {
+    /* background-color: #353A49; */
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: self-start;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.track{
+    display: flex;
+    justify-content: center;
+}
+
+.img-track{
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+    /* background-color: blue; */
+}
+
+.info-track {
+    /* background-color: #8c45ff; */
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 5px;
+    font-size: 12px;
+}
+
+.titulo-track{
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    white-space: nowrap;      /* impede quebra de linha */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
+.titulo-track:hover{
+    color: var(--botao);
+    transition: all 0.3s ease-in-out;
+}
+
+.artist-track{
+    color: gray;
+}
+
+.time-track{
+    color: var(--botao-degrade);
+}
+
+/* ==================================== FOOTER =================================== */
+.footer-cotainer {
+    background-color: var(--container);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    font-size: 12px;
+    color: var(--text-color);
+    border-top: var(--botao) 2px solid;
+}
